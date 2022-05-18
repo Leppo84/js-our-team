@@ -77,54 +77,77 @@ addEmpl (team,deploy);
 
 function addEmpl (arrayEmp, node) {
 
+  for (let i = 0; i < arrayEmp.length; i++) {
+    const empl = arrayEmp[i];
 
-        for (let i = 0; i < arrayEmp.length; i++) {
-            const empl = arrayEmp[i];
+    let card = document.createElement("div");
+    card.className = "team-card";
+    node.append(card);
 
-            let card = document.createElement("div");
-            card.className = "team-card";
-            node.append(card);
+    let cardImg = document.createElement("div");
+    cardImg.className = "card-image";
+    card.append(cardImg);
 
-            let cardImg = document.createElement("div");
-            cardImg.className = "card-image";
-            card.append(cardImg);
+    let emplName = empl.name;
+    let emplRole = empl.role;
+    let emplPic = empl.src;
+    
+    let pic = document.createElement("img");
+    pic.src = emplPic;
+    pic.alt = emplName
+    cardImg.append(pic);
 
-            let emplName = empl.name;
-            let emplRole = empl.role;
-            let emplPic = empl.src;
-            
-            let pic = document.createElement("img");
-            pic.src = emplPic;
-            pic.alt = emplName
-            cardImg.append(pic);
+    let cardTxt = document.createElement("div");
+    cardTxt.className = "card-text";
+    card.append(cardTxt);
 
-            let cardTxt = document.createElement("div");
-            cardTxt.className = "card-text";
-            card.append(cardTxt);
+    let txtName = document.createElement("h3");
+    txtName.append(emplName);
+    cardTxt.append(txtName);
 
-            let txtName = document.createElement("h3");
-            txtName.append(emplName);
-            cardTxt.append(txtName);
-
-            let txtRole = document.createElement("p");
-            txtRole.append(emplRole);
-            cardTxt.append(txtRole);
-        }
+    let txtRole = document.createElement("p");
+    txtRole.append(emplRole);
+    cardTxt.append(txtRole);
+  }
 }
 
-{/* <div class="team-card">
-<div class="card-image">
-  <img
-    src="img/wayne-barnett-founder-ceo.jpg"
-    alt="Wayne Barnett"
-  />
-</div>
-<div class="card-text">
-  <h3>Wayne Barnett</h3>
-  <p>Founder & CEO</p>
-</div>
-</div> */}
-
-// genero un nuovo oggetto dell'invio dei dati del form 
-
 // Modifico la funzione per generare l'inserimento di altre figure attraverso il form
+
+const addBtn = document.getElementById("addMemberButton");
+
+
+addBtn.addEventListener("click",
+  function () {
+    const node = document.querySelector("div.team-container");
+
+    let card = document.createElement("div");
+    card.className = "team-card";
+    node.append(card);
+
+    let cardImg = document.createElement("div");
+    cardImg.className = "card-image";
+    card.append(cardImg);
+
+    let emplName = document.getElementById("name").value;
+    let emplRole = document.getElementById("role").value;
+    let emplPic = document.getElementById("image").value;
+    
+    let pic = document.createElement("img");
+    pic.src = emplPic;
+    pic.alt = emplName
+    cardImg.append(pic);
+
+    let cardTxt = document.createElement("div");
+    cardTxt.className = "card-text";
+    card.append(cardTxt);
+
+    let txtName = document.createElement("h3");
+    txtName.append(emplName);
+    cardTxt.append(txtName);
+
+    let txtRole = document.createElement("p");
+    txtRole.append(emplRole);
+    cardTxt.append(txtRole);
+  }
+
+)
